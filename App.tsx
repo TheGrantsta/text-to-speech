@@ -75,12 +75,16 @@ function App(): React.JSX.Element {
     play(text);
   }
 
-  const handlePlayPause = () => {
-      play(weatherForecast);
+  const handleOnPlay = () => {
+    play(weatherForecast);
   }
 
-  const play = (txt) => {
-    Tts.speak(txt, {
+  const handleOnStop = () => {
+    console.log('Stop called!');
+  }
+
+  const play = (message: string) => {
+    Tts.speak(message, {
       iosVoiceId: 'com.apple.ttsbundle.Samantha-compact',
       rate: 0.5,
       androidParams: {
@@ -122,10 +126,15 @@ function App(): React.JSX.Element {
               {weatherForecast}
             </Text>
             <Button
-              title='Play | Pause'
-              onPress={() => handlePlayPause()}
+              title='Play'
+              onPress={() => handleOnPlay()}
+            />
+            <Button
+              title='Stop'
+              onPress={() => handleOnStop()}
             />
           </Section>
+
         </View>
       </ScrollView>
     </SafeAreaView>
