@@ -72,7 +72,15 @@ function App(): React.JSX.Element {
   Tts.addEventListener('tts-cancel', (event) => console.log('cancel:', event));
 
   const handleOnPress = () => {
-    Tts.speak(text, {
+    play(text);
+  }
+
+  const handlePlayPause = () => {
+      play(weatherForecast);
+  }
+
+  const play = (txt) => {
+    Tts.speak(txt, {
       iosVoiceId: 'com.apple.ttsbundle.Samantha-compact',
       rate: 0.5,
       androidParams: {
@@ -81,10 +89,6 @@ function App(): React.JSX.Element {
         KEY_PARAM_STREAM: 'STREAM_MUSIC',
       },
     });
-  }
-
-  const handlePlayPause = () => {
-    Tts.speak(weatherForecast);
   }
 
   return (
