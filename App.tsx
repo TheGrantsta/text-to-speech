@@ -65,7 +65,15 @@ function App(): React.JSX.Element {
   };
 
   const handleOnPress = () => {
-    Tts.speak(text);
+    Tts.speak(text, {
+      iosVoiceId: 'com.apple.ttsbundle.Samantha-compact',
+      rate: 0.5,
+      androidParams: {
+        KEY_PARAM_PAN: -1,
+        KEY_PARAM_VOLUME: 0.5,
+        KEY_PARAM_STREAM: 'STREAM_MUSIC',
+      },
+    });
   }
 
   return (
