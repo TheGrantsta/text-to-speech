@@ -65,6 +65,10 @@ function App(): React.JSX.Element {
   };
 
   Tts.setIgnoreSilentSwitch('ignore');
+  Tts.addEventListener('tts-start', (event) => console.log('start:', event));
+  Tts.addEventListener('tts-progress', (event) => console.log('in progress:', event));
+  Tts.addEventListener('tts-finish', (event) => console.log('finish:', event));
+  Tts.addEventListener('tts-cancel', (event) => console.log('cancel:', event));
 
   const handleOnPress = () => {
     Tts.speak(text, {
