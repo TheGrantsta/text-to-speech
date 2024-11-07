@@ -64,6 +64,8 @@ function App(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  Tts.setIgnoreSilentSwitch('ignore');
+
   const handleOnPress = () => {
     Tts.speak(text, {
       iosVoiceId: 'com.apple.ttsbundle.Samantha-compact',
