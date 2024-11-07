@@ -25,6 +25,8 @@ import {
   Header,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Tts from 'react-native-tts';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -64,7 +66,7 @@ function App(): React.JSX.Element {
   };
 
   const handleOnPress = () => {
-    Alert.alert('On press', text);
+    Tts.speak(text);
   }
 
   return (
@@ -89,7 +91,7 @@ function App(): React.JSX.Element {
             />
             <Button
               title='Speak'
-              onPress={handleOnPress}
+              onPress={() => handleOnPress()}
             />
           </Section>
         </View>
