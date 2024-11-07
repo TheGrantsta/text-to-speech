@@ -58,6 +58,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 
 function App(): React.JSX.Element {
   const [text, onChangeText] = React.useState('');
+  const weatherForecast = 'Partly cloudy conditions will continue for the rest of the day. Wind gusts up to 13 mph.';
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -80,6 +81,10 @@ function App(): React.JSX.Element {
         KEY_PARAM_STREAM: 'STREAM_MUSIC',
       },
     });
+  }
+
+  const handlePlayPause = () => {
+    Tts.speak(weatherForecast);
   }
 
   return (
@@ -108,6 +113,15 @@ function App(): React.JSX.Element {
               onPress={() => handleOnPress()}
             />
           </Section>
+          <Section title='Weather forecast'>
+            <Text style={styles.weatherForecast}>
+              {weatherForecast}
+            </Text>
+            <Button
+              title='Play | Pause'
+              onPress={() => handlePlayPause()}
+            />
+          </Section>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -127,6 +141,10 @@ const styles = StyleSheet.create({
     marginTop: 8,
     fontSize: 18,
     fontWeight: '400',
+  },
+  weatherForecast: {
+    margin: 10,
+    padding: 10,
   },
   input: {
     height: 40,
