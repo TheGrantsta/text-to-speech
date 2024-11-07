@@ -112,10 +112,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '400',
   },
-  highlight: {
-    fontWeight: '700',
-    margin: 50
-  },
   input: {
     height: 40,
     width: 300,
