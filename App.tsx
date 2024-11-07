@@ -17,7 +17,6 @@ import {
   View,
   TextInput,
   Button,
-  Alert
 } from 'react-native';
 
 import {
