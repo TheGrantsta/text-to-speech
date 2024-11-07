@@ -15,14 +15,14 @@ import {
   Text,
   useColorScheme,
   View,
+  TextInput,
+  Button,
+  Alert
 } from 'react-native';
 
 import {
   Colors,
-  DebugInstructions,
   Header,
-  LearnMoreLinks,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
 type SectionProps = PropsWithChildren<{
@@ -56,11 +56,16 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 }
 
 function App(): React.JSX.Element {
+  const [text, onChangeText] = React.useState('Enter text to speech');
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  const handleOnPress = () => {
+    Alert.alert('On press', text);
+  }
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -76,20 +81,17 @@ function App(): React.JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
+          <Section title="Text to speech">
+            <TextInput
+              style={styles.input}
+              onChangeText={onChangeText}
+              value={text}
+            />
+            <Button
+              title='Speak'
+              onPress={handleOnPress}
+            />
           </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -112,6 +114,14 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+    margin: 50
+  },
+  input: {
+    height: 40,
+    width: 300,
+    margin: 30,
+    borderWidth: 1,
+    padding: 10,
   },
 });
 
