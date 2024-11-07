@@ -57,7 +57,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 }
 
 function App(): React.JSX.Element {
-  const [text, onChangeText] = React.useState('Enter text to speech');
+  const [text, onChangeText] = React.useState('');
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -87,6 +87,7 @@ function App(): React.JSX.Element {
               style={styles.input}
               onChangeText={onChangeText}
               value={text}
+              placeholder='Enter text to speech'
             />
             <Button
               title='Speak'
