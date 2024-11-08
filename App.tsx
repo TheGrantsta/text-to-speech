@@ -81,6 +81,7 @@ function App(): React.JSX.Element {
 
   const handleOnStop = () => {
     console.log('Stop called!');
+    Tts.stop();
   }
 
   const play = (message: string) => {
