@@ -38,6 +38,9 @@ yarn android
 # using npm
 npm run ios
 
+# using iPhone 16 Pro
+react-native run-ios --simulator "iPhone 16 Pro"
+
 # OR using Yarn
 yarn ios
 ```
